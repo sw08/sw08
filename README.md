@@ -7,7 +7,7 @@
 - I'm in [Studio Orora](https://github.com/teamorora), made by [me](https://github.com/sw08), and in [Team Teb](https://github.com/TEAMTEB), made by [OHvrything](https://github.com/OHvrything). 
 
 #### My Top Language
-![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=tim232&theme=tokyonight)
+![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
 
 <!--
 **sw08/sw08** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
