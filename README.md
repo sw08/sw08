@@ -2,12 +2,15 @@
 ![Profile](profile.png)
 
 ## yswysw
-- I'm a normal student developer that was born in 2008, and known as yswysw in [Discord](https://discord.com/users/745848200195473490), [Blog](https://blog.naver.com/lswja6866), and [Scratch](https://scratch.mit.edu/yswysw), etc.
+- I'm a normal student developer that was born in `2008`, and known as `yswysw`(or `건빵`) in [Discord](https://discord.com/users/745848200195473490), [Blog](https://blog.naver.com/lswja6866), and [Scratch](https://scratch.mit.edu/yswysw), etc.
 - I usually do `python`, but sometimes `HTML` *only*. This is because I never do good in WEB like `JS`, `CSS`, etc. And I'm not good at design, too.
-- I'm Freeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+- 
 
 #### My Top Language
 ![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
+
+#### My Stats
+![My Stats](https://github-readme-stats.vercel.app/api?username=sw08)
 
 <!--
 **sw08/sw08** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
