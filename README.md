@@ -1,5 +1,5 @@
 # Hello! :D
-![Profile](profile.png)
+![Profile](프사.png)
 
 ## yswysw
 - I'm a normal student developer that was born in `2008`, and known as `yswysw`(or `건빵`) in [Discord](https://discord.com/users/745848200195473490), [Blog](https://blog.naver.com/lswja6866), and [Scratch](https://scratch.mit.edu/yswysw), etc.
