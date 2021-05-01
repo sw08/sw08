@@ -2,9 +2,9 @@
 ![Profile](프사.png)
 
 ## yswysw
-- I'm a normal student developer that was born in `2008`, and known as `yswysw`(or `건빵`) in [Discord](https://discord.com/users/745848200195473490), [Blog](https://blog.naver.com/lswja6866), and [Scratch](https://scratch.mit.edu/yswysw), etc.
+- I'm a normal student developer that was born in `2008`, and known as `yswysw`(or `건빵`) in [Discord](https://discord.com/users/745848200195473490), [Blog](https://blog.naver.com/lswja6866), and [Scratch](https://scratch.mit.edu/yswysw)(I don't do it anymore), etc.
 - I usually do `python`, but sometimes `HTML` *only*. This is because I never do good in WEB like `JS`, `CSS`, etc. And I'm not good at design, too.
-- 
+- [![Discord](https://discord.c99.nl/widget/theme-3/745848200195473490.png)](https://discord.com/users/745848200195473490)
 
 #### My Top Language
 ![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
