@@ -3,7 +3,7 @@
 ## yswysw
 - An ordinary student developer known as `yswysw`(or `건빵`, `아몬드`, etc).
 - Skill level is between beginner and intermediate.
-- Running a [Youtube](https://yt.yswysw.tech), and a [Blog](https://blog.yswysw.tech) - not available because of backend problem.
+- Running a [Youtube](https://yt.yswysw.tech), and a [Blog](https://blog.yswysw.tech).
 - Usually doing python, arduino, and (a little) js.
 - The most popular project I've ever made is **[Meme-Bot](https://github.com/project-memebot/memebot)**, which is under [Happytree Samsung](https://github.com/samsunghappytree123)'s management of **[Studio-Orora](https://orora.studio)** now.
 - One of the establishers of **[Studio-Orora](https://orora.studio)**
