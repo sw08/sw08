@@ -2,11 +2,10 @@
 
 # yswysw
 - An ordinary student developer known as `yswysw`.
-- Running a [Blog](https://blog.yswysw.tech).
 - Usually doing python and js.
-- A big fan of Alan Walker - Walker#81925
+- A big fan of Linkin Park, Alan Walker
 - Like mechanical things, cars, computers, and mathematics
-- yswysw@yswysw.tech
+- yswysww0518@gmail.com
 
 #### My Top Language
 ![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
