@@ -6,6 +6,7 @@
 - A big fan of Linkin Park, Alan Walker
 - Like mechanical things, cars, computers, and mathematics
 - yswysw0518@gmail.com
+- [More](https://sw08.github.io)
 
 #### My Top Language
 ![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
