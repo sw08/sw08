@@ -8,5 +8,7 @@
 #### My Top Language
 ![Top Language](https://github-readme-stats.vercel.app/api/top-langs/?username=sw08&theme=tokyonight)
 
+<!--
 #### My Stats
 ![My Stats](https://github-readme-stats.vercel.app/api?username=sw08&theme=tokyonight)
+-->
