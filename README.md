@@ -1,8 +1,8 @@
 # yswysw
-- A Korean high school student usually known as `yswysw`.
+- A Korean high school student usually called `yswysw`.
 - Mainly using python and js (and a little bit of c#/c), and planning to learn java, c++. 
-- Personally like mathematics, engineering and motorsport.
-- Interested in backend programming.  
+- Interested in backend programming.
+- Aviation and racing simmer.
 - yswysw0518@gmail.com
 
 #### My Top Language
