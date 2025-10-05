@@ -5,3 +5,5 @@ NodeJS, Python, Arduino
 Flight Sim & Simracing  
 Fan of Linkin Park  
 🐉💎
+
+https://sw08.dev
