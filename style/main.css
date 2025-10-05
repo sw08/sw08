@@ -54,7 +54,9 @@ h2 {
     width: 5vh;
 }
 
-.icon:hover {
-    cursor: pointer;
-    filter: brightness(0.8);
+@media (hover:hover) {
+    .icon:hover {
+        cursor: pointer;
+        filter: brightness(0.9);
+    }
 }
