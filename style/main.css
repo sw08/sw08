@@ -58,5 +58,8 @@ h2 {
     .icon:hover {
         cursor: pointer;
         filter: brightness(0.9);
+        transform: scale(1.1);
+        transition-timing-function: ease-in-out;
+        transition-duration: 0.15s
     }
 }
