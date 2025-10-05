@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'KCCHanbit';
+    src: url('/resource/KCC-Hanbit.eot') format('embedded-opentype'),
+        url('/resource/KCC-Hanbit.woff2') format('woff2'),
+        url('/resource/KCC-Hanbit.woff') format('woff'),
+        url('/resource/KCC-Hanbit.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    flex-direction: column;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: #6e90f7;
+    color: white;
+}
+
+div {
+    font-family: 'KCCHanbit';
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2.2em;
+}
+
+
+#profilePic {
+    width: 25vh;
+    border-radius: 50%;
+}
+
+.icon {
+    margin-left: 1vh;
+    margin-right: 1vh;
+    width: 5vh;
+}
+
+.icon:hover {
+    cursor: pointer;
+    filter: brightness(0.8);
+}
