@@ -5,7 +5,8 @@ os.chdir("./screenshots")
 
 files = os.listdir()
 
-by_year, by_month, by_day, by_acft, by_lvry, by_arpt = (
+by_year, by_month, by_day, by_acft, by_lvry, by_arpt, tags = (
+    defaultdict(list),
     defaultdict(list),
     defaultdict(list),
     defaultdict(list),
@@ -35,6 +36,15 @@ if os.path.isdir("../database"):
 os.mkdir("../database")
 os.chdir("../database")
 
+tags = {
+    "by_year": list(by_year.keys()),
+    "by_month": list(by_month.keys()),
+    "by_day": list(by_day.keys()),
+    "by_acft": list(by_acft.keys()),
+    "by_lvry": list(by_lvry.keys()),
+    "by_arpt": list(by_arpt.keys()),
+}
+
 with open("by_year.json", "w") as f:
     json.dump(by_year, f)
 with open("by_month.json", "w") as f:
@@ -48,3 +58,6 @@ with open("by_lvry.json", "w") as f:
     json.dump(by_lvry, f)
 with open("by_arpt.json", "w") as f:
     json.dump(by_arpt, f)
+
+with open("tags.json", "w") as f:
+    json.dump(tags, f)
