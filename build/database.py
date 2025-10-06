@@ -3,7 +3,7 @@ import os, json, shutil
 
 os.chdir("./screenshots")
 
-files = os.listdir()
+files = [i for i in os.listdir() if os.path.isfile(i)]
 
 by_year, by_month, by_day, by_acft, by_lvry, by_arpt, tags = (
     defaultdict(list),
