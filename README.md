@@ -2,8 +2,8 @@
 
 Just a Korean student  
 NodeJS, Python, Arduino  
-Flight Sim & Simracing  
-Fan of Linkin Park  
-🐉💎
+Flight Sim Related Things
+
+💎
 
 https://sw08.dev
