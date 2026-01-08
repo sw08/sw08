@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'KCCHanbit';
+    font-family: 'KCC-Hanbit';
     src: url('/resource/KCC-Hanbit.eot') format('embedded-opentype'),
         url('/resource/KCC-Hanbit.woff2') format('woff2'),
         url('/resource/KCC-Hanbit.woff') format('woff'),
@@ -27,35 +27,60 @@
 }
 
 body {
-    width: 100vw;
+    width: 100dvw;
     height: 100dvh;
     margin: 0;
     background-color: #6e90f7;
     color: white;
 }
 
-div {
-    font-family: 'KCCHanbit';
+html {
+    font-size: 1.4vh;
+    font-family: 'KCC-Hanbit';
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 
 h2 {
-    font-size: 2.2em;
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4 {
+    font-size: 1.4rem;
+}
+
+h5 {
+    font-size: 1.2rem;
+}
+
+h6 {
+    font-size: 1.1rem;
 }
 
 
-#profilePic {
-    width: 25vh;
-    border-radius: 50%;
+.noMargin {
+    margin: 0;
 }
+.noPadding {
+    padding: 0;
+}
+
 
 .icon {
-    margin-left: 1vh;
-    margin-right: 1vh;
-    width: 5vh;
+    margin-left: 1ch;
+    margin-right: 1ch;
+    width: 6ch;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 @media (hover:hover) and (pointer:fine) {
@@ -66,4 +91,40 @@ h2 {
         transition-timing-function: ease-in-out;
         transition-duration: 0.15s
     }
+}
+
+
+
+div.h4button {
+    transition: all 0.3s ease;
+    background-color: white;
+    color: #6e90f7;
+    border: 3px solid white;
+    height: 4em;
+    border-radius: 2em;
+    margin: 2vh 0;
+}
+
+div.h4button:hover {
+    background-color: #6e90f7;
+    color: white;
+    cursor: pointer;
+}
+
+div.h4button:hover .hoverIcon {
+    background: white;
+}
+
+
+div.hoverIcon {
+    
+    width: 2.5ch;
+    height: 2.5ch;
+    margin-left: 0;
+    margin-right: 1ch;
+    background: #6e90f7;
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    transition: all 0.3s ease;
 }

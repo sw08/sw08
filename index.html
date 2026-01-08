@@ -6,13 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Seungwoo Yi</title>
         <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/style/index.css">
         <script src="/script/main.js" type="application/javascript"></script>
     </head>
 
     <body class="center column">
-        <div id="header" class="center column">
+        <div id="first" class="center column">
             <img src="/resource/profile.png" alt="Profile Picture" id="profilePic" />
-            <h1 alt="Seungwoo Yi">Seungwoo Yi</h1>
+            <h1>Seungwoo Yi</h1>
             <div id="links" class="center row">
                 <a href="https://github.com/sw08/" target="_blank" rel="noopener noreferrer">
                     <img src="/resource/github.svg" alt="GitHub" class="icon" />
@@ -22,6 +23,11 @@
                 <img src="/resource/email.svg" alt="Email" class="icon"
                     onclick="copy('yswysw0518@gmail.com', 'Email address copied!')" />
             </div>
+            <div id='galleryBtn' class="h4button center row" onclick="window.location.href = '/gallery.html'">
+                <div id="galleryLinkIcon" class="hoverIcon"></div>
+                <h4>FlightSim Gallery</h4>
+            </div>
+        </div>
     </body>
 
 </html>
