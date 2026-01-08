@@ -1,0 +1,13 @@
+#goBackBtn {
+    width: 20ch;
+}
+
+#warningImage {
+    mask-image: url('/resource/warning.svg');
+}
+
+
+#goBackIcon {
+    mask-image: url('/resource/back.svg');
+}
+ 

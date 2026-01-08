@@ -1,0 +1,14 @@
+#galleryBtn {
+    width: 27ch;
+}
+
+
+#galleryLinkIcon {
+    mask-image: url('/resource/link.svg');
+}
+ 
+
+#profilePic {
+    width: 25vh;
+    border-radius: 50%;
+}
