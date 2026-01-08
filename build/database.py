@@ -5,10 +5,8 @@ os.chdir("./screenshots")
 
 files = [i for i in os.listdir() if os.path.isfile(i)]
 
-by_year, by_month, by_day, by_acft, by_lvry, by_arpt, tags = (
-    defaultdict(list),
-    defaultdict(list),
-    defaultdict(list),
+by_date, by_acft, by_lvry, by_arpt, tags = (
+    defaultdict(lambda: defaultdict(lambda: defaultdict(list))),
     defaultdict(list),
     defaultdict(list),
     defaultdict(list),
@@ -27,9 +25,7 @@ for i in files:
     year = date[:4]
     month = date[4:6]
     day = date[6:8]
-    by_year[year].append(filename)
-    by_month[month].append(filename)
-    by_day[day].append(filename)
+    by_date[year][month][day].append(filename)
 
 if os.path.isdir("../database"):
     shutil.rmtree("../database")
@@ -37,20 +33,13 @@ os.mkdir("../database")
 os.chdir("../database")
 
 tags = {
-    "by_year": list(by_year.keys()),
-    "by_month": list(by_month.keys()),
-    "by_day": list(by_day.keys()),
     "by_acft": list(by_acft.keys()),
     "by_lvry": list(by_lvry.keys()),
     "by_arpt": list(by_arpt.keys()),
 }
 
-with open("by_year.json", "w") as f:
-    json.dump(by_year, f)
-with open("by_month.json", "w") as f:
-    json.dump(by_month, f)
-with open("by_day.json", "w") as f:
-    json.dump(by_day, f)
+with open("by_date.json", "w") as f:
+    json.dump(by_date, f)
 
 with open("by_acft.json", "w") as f:
     json.dump(by_acft, f)
