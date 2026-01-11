@@ -27,11 +27,16 @@
 }
 
 body {
-    width: 100dvw;
-    height: 100dvh;
+    width: 100vw;
     margin: 0;
     background-color: #6e90f7;
     color: white;
+    -ms-overflow-style: none;
+    text-align: center;
+}
+
+header {
+    width: 100vw;
 }
 
 html {
@@ -40,33 +45,34 @@ html {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
 }
 
 h2 {
-    font-size: 2.2rem;
+    font-size: 3rem;
 }
 
 h3 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
 }
 
 h4 {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
 }
 
 h5 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 h6 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 
 .noMargin {
     margin: 0;
 }
+
 .noPadding {
     padding: 0;
 }
@@ -117,7 +123,7 @@ div.h4button:hover .hoverIcon {
 
 
 div.hoverIcon {
-    
+
     width: 2.5ch;
     height: 2.5ch;
     margin-left: 0;
@@ -127,4 +133,9 @@ div.hoverIcon {
     mask-position: center;
     mask-repeat: no-repeat;
     transition: all 0.3s ease;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
 }
