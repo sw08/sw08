@@ -1,5 +1,5 @@
 #galleryBtn {
-    width: 27ch;
+    width: 33ch;
 }
 
 
@@ -11,4 +11,8 @@
 #profilePic {
     width: 25vh;
     border-radius: 50%;
+}
+
+body {
+    height: 100vh;
 }
