@@ -97,6 +97,16 @@ a {
         transition-timing-function: ease-in-out;
         transition-duration: 0.15s
     }
+
+    div.h4button:hover {
+        background-color: #6e90f7;
+        color: white;
+        cursor: pointer;
+    }
+
+    div.h4button:hover .hoverIcon {
+        background: white;
+    }
 }
 
 
@@ -111,19 +121,9 @@ div.h4button {
     margin: 2vh 0;
 }
 
-div.h4button:hover {
-    background-color: #6e90f7;
-    color: white;
-    cursor: pointer;
-}
-
-div.h4button:hover .hoverIcon {
-    background: white;
-}
 
 
 div.hoverIcon {
-
     width: 2.5ch;
     height: 2.5ch;
     margin-left: 0;

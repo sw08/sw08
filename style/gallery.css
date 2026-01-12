@@ -11,10 +11,25 @@
     aspect-ratio: 16 / 9;
 }
 
-.gallery-preview:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-    cursor: pointer;
+@media (hover: hover) and (pointer: fine) {
+    .gallery-preview:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+    }
+
+    #order:hover,
+    #filter:hover {
+        cursor: pointer;
+    }
+
+    .tag:hover {
+        animation: both 0.3s ease-in-out shake;
+        background-color: white;
+        color: #6e90f7;
+        transition: ease-in-out 0.3s;
+    }
+
 }
 
 body {
@@ -39,9 +54,6 @@ nav {
     justify-content: space-between !important;
 }
 
-#order:hover, #filter:hover {
-    cursor: pointer;
-}
 
 .tag {
     background-color: #6e90f7;
@@ -51,12 +63,6 @@ nav {
     border-radius: 1.5ch;
 }
 
-.tag:hover {
-    animation: both 0.3s ease-in-out shake;
-    background-color: white;
-    color: #6e90f7;
-    transition: ease-in-out 0.3s;
-}
 
 @keyframes shake {
     0% {
