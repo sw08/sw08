@@ -1,26 +1,54 @@
-document.addEventListener('DOMContentLoaded', async function () {
-  const params = new URLSearchParams(window.location.search);
+window.addEventListener('DOMContentLoaded', async () => {
   document.byLvry = await (await fetch('/database/by_lvry.json')).json();
   document.byArpt = await (await fetch('/database/by_arpt.json')).json();
   document.byAcft = await (await fetch('/database/by_acft.json')).json();
   document.files = await (await fetch('/database/all_files.json')).json();
-  document.ascending = false;
-  console.log(document.ascending);
+  document.galleryDiv = document.querySelector('div#gallery');
+  const params = new URLSearchParams(window.location.search);
+  document.ascending = params.get('ascending') === 'true';
   processFileNames();
-  if (params.get('ascending') === 'true') {
+  if (document.ascending) {
     document.files.reverse();
-    document.ascending = true;
   }
-  refreshPhoto();
+  document.loaded = 0;
+  refreshFilter();
+  let toLoad = 12;
+  if (toLoad > document.files.length) toLoad = document.files.length;
+  loadPhoto(toLoad);
+  document.columnCount = getGalleryColumnCount();
+  if (document.loaded < document.files.length && toLoad % document.columnCount) {
+    toLoad = (Math.floor(toLoad / document.columnCount) + 1) * document.columnCount;
+  }
+  loadPhoto(toLoad - document.loaded);
   document.querySelector('#order').onclick = reverseBtn;
 });
 
-function refreshPhoto () {
-  document.querySelector('div.gallery').innerHTML = '';
-  document.filtered = filter({});
-  for (const [i, img] of document.filtered.entries()) {
+window.addEventListener('resize', () => {
+  document.columnCount = getGalleryColumnCount();
+  if (document.loaded < document.files.length && document.loaded % document.columnCount) {
+    loadPhoto(document.columnCount - document.loaded % document.columnCount);
+  }
+}, { passive: true });
+
+window.addEventListener('scroll', () => {
+  const rect = document.galleryDiv.getBoundingClientRect();
+  if (document.loaded < document.files.length && (window.innerHeight - rect.top) / rect.height >= 0.8) {
+    loadPhoto(document.columnCount);
+  }
+}, { passive: true });
+
+function loadPhoto (count) {
+  for (let i = document.loaded; i < Math.min(document.loaded + count, document.filtered.length); i++) {
+    const img = document.filtered[i];
     addImage(i, img);
   }
+  document.loaded = Math.min(document.loaded + count, document.filtered.length);
+  refreshState();
+}
+
+function refreshFilter () {
+  document.querySelector('div#gallery').innerHTML = '';
+  document.filtered = filter({});
 }
 
 function addImage (order, img) {
@@ -41,7 +69,7 @@ function addImage (order, img) {
   tagh4.innerText = img.dataType === 'arpt' ? img.arpt : `${img.acft}`;
   tagDiv.appendChild(tagh4);
   div.appendChild(tagDiv);
-  document.querySelector('div.gallery').appendChild(div);
+  document.galleryDiv.appendChild(div);
 }
 
 function refreshState () {
@@ -52,14 +80,19 @@ function refreshState () {
 
 function reverseBtn () {
   const params = new URLSearchParams(window.location.search);
-  console.log(`?${params.toString()}`);
   params.set('ascending', !document.ascending);
-  console.log(`?${params.toString()}`);
   window.location.href = `?${params.toString()}`;
-  // document.ascending = !document.ascending;
-  // refreshState();
-  // document.files.reverse();
-  // refreshPhoto();
+}
+
+function getGalleryColumnCount () {
+  const child = document.galleryDiv.querySelector('.gallery-preview');
+  if (!child) return 0;
+  const galleryWidth = document.galleryDiv.clientWidth || document.galleryDiv.getBoundingClientRect().width;
+  const childStyle = child.style;
+  const childWidth = child.getBoundingClientRect().width +
+    (parseFloat(childStyle.marginLeft) || 0) + (parseFloat(childStyle.marginRight) || 0);
+  if (!childWidth || childWidth <= 0) return 1;
+  return Math.max(1, Math.floor(galleryWidth / childWidth));
 }
 
 function processFileNames () {

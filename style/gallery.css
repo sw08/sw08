@@ -38,18 +38,18 @@ body {
 }
 
 @media (min-width: 500px) {
-    .gallery {
+    #gallery {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 }
 
 @media (max-width: 499px) {
-    .gallery {
+    #gallery {
         grid-template-columns: 1fr;
     }
 }
 
-.gallery {
+#gallery {
     display: grid;
     gap: 1vw;
     width: 80vw;
