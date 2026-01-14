@@ -54,12 +54,16 @@ function refreshFilter () {
 function addImage (order, img) {
   const div = document.createElement('div');
   div.classList.add('gallery-preview');
-  div.style.backgroundImage = `url('/screenshots/360p/${img.name}')`;
   div.style.order = order;
   div.title = img.dateString;
   div.addEventListener('click', function () {
     window.location.href = `/screenshot.html?img=${img.name}`;
   });
+  const imgTag = document.createElement('img');
+  imgTag.src = `/screenshots/360p/${img.name}`;
+  imgTag.classList.add('preview-image');
+  imgTag.loading = 'lazy';
+  div.appendChild(imgTag);
   const tagDiv = document.createElement('div');
   tagDiv.classList.add('tag');
   tagDiv.classList.add('center');
