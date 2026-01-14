@@ -38,13 +38,24 @@ body {
     justify-content: flex-start !important;
 }
 
+@media (min-width: 500px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+@media (max-width: 499px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
 .gallery {
     display: grid;
-    width: 80vw;
     gap: 1vw;
+    width: 80vw;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 
 nav {
