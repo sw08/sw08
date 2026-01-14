@@ -60,7 +60,7 @@ function addImage (order, img) {
     window.location.href = `/screenshot.html?img=${img.name}`;
   });
   const imgTag = document.createElement('img');
-  imgTag.src = `/screenshots/360p/${img.name}`;
+  imgTag.src = `/screenshots/360p/${img.name}.webp`;
   imgTag.classList.add('preview-image');
   imgTag.loading = 'lazy';
   div.appendChild(imgTag);
