@@ -1,5 +1,5 @@
 .gallery-preview {
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    position: relative;
     transition: ease-in-out 0.2s;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,11 +11,18 @@
     aspect-ratio: 16 / 9;
 }
 
+.preview-image {
+    width: 100%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
 @media (hover: hover) and (pointer: fine) {
     .gallery-preview:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         cursor: pointer;
+    }
+    .gallery-preview:hover .preview-image {
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
     }
 
     #order:hover,
@@ -66,6 +73,7 @@ nav {
 
 
 .tag {
+    position: absolute;
     background-color: #6e90f7;
     height: 4ch;
     padding: 0 0.75rem;
