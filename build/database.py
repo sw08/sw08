@@ -3,7 +3,7 @@ import os, json, shutil
 
 os.chdir("./screenshots")
 
-files = [i for i in os.listdir() if os.path.isfile(i)]
+files = [i[:-4] for i in os.listdir() if os.path.isfile(i)]
 
 by_acft, by_lvry, by_arpt = (
     defaultdict(list),
@@ -13,7 +13,7 @@ by_acft, by_lvry, by_arpt = (
 
 for i in files:
     filename = i
-    i = i.split("_")
+    i = filename.split("_")
     if len(i) == 3:
         by_arpt[i[0]].append(filename)
     else:
