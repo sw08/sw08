@@ -17,10 +17,13 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .gallery-preview:hover {
+
+    .gallery-preview:hover,
+    #topBtn:hover {
         transform: scale(1.05);
         cursor: pointer;
     }
+
     .gallery-preview:hover .preview-image {
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
     }
@@ -34,12 +37,11 @@
         animation: both 0.3s ease-in-out shake;
         background-color: white;
         color: #6e90f7;
-        transition: ease-in-out 0.3s;
     }
-
 }
 
 body {
+    position: relative;
     justify-content: flex-start !important;
 }
 
@@ -63,6 +65,19 @@ body {
     justify-content: center;
 }
 
+#topBtn {
+    position: fixed;
+    height: 9ch;
+    width: 9ch;
+    border-radius: 4.5ch;
+    bottom: min(calc((10vh - 9ch) / 2), 50px);
+    right: min(calc((10vh - 9ch) / 2), 50px);
+    z-index: 1;
+    background-color: white;
+    color: #6e90f7;
+}
+
+
 nav {
     width: 80vw;
     height: 7vh;
@@ -78,6 +93,7 @@ nav {
     padding: 0 0.75rem;
     margin: 1ch 0.75ch;
     border-radius: 1.5ch;
+    transition: ease-in-out 0.3s;
 }
 
 
