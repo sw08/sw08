@@ -14,7 +14,7 @@ function parseImageFileName(fn) {
     second: Number(parts.at(-1).slice(4, 6)),
     dataType: parts.length === 3 ? 'arpt' : 'acft'
   };
-  data.dateString = `${data.year}/${data.month}/${data.day} ${data.hour}:${data.minute}:${data.second}`;
+  data.dateString = `${data.year}/${leftZeroPad(data.month, 2)}/${leftZeroPad(data.day, 2)} ${leftZeroPad(data.hour, 2)}:${leftZeroPad(data.minute, 2)}:${leftZeroPad(data.second, 2)}`;
   if (data.dataType === 'arpt') {
     data.arpt = parts[0];
   } else {
@@ -22,4 +22,12 @@ function parseImageFileName(fn) {
     data.lvry = parts[0];
   }
   return data;
+}
+
+function leftZeroPad(num, count) {
+  num = num.toString();
+  while (count - num.length) {
+    num = '0' + num;
+  }
+  return num;
 }
