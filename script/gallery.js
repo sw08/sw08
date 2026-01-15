@@ -102,24 +102,7 @@ function getGalleryColumnCount () {
 function processFileNames () {
   const files = [];
   for (const fn of document.files) {
-    const parts = fn.split('_');
-    files.push({
-      name: fn,
-      year: Number(parts.at(-2).slice(0, 4)),
-      month: Number(parts.at(-2).slice(4, 6)),
-      day: Number(parts.at(-2).slice(6, 8)),
-      hour: Number(parts.at(-1).slice(0, 2)),
-      minute: Number(parts.at(-1).slice(2, 4)),
-      second: Number(parts.at(-1).slice(4, 6)),
-      dataType: parts.length === 3 ? 'arpt' : 'acft'
-    });
-    files[files.length - 1].dateString = `${files.at(-1).year}/${files.at(-1).month}/${files.at(-1).day} ${files.at(-1).hour}:${files.at(-1).minute}:${files.at(-1).second}`;
-    if (files[files.length - 1].dataType === 'arpt') {
-      files[files.length - 1].arpt = parts[0];
-    } else {
-      files[files.length - 1].acft = parts[1];
-      files[files.length - 1].lvry = parts[0];
-    }
+    files.push(parseImageFileName(fn));
   }
   files.sort((a, b) => {
     const dateA = new Date(a.year, a.month, a.day, a.hour, a.minute, a.second);
