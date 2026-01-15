@@ -7,7 +7,7 @@
         <title>Gallery</title>
         <link rel="stylesheet" href="/style/main.css">
         <link rel="stylesheet" href="/style/gallery.css">
-        <script src="/script/main.js" type="application/javascript"></script> 
+        <script src="/script/main.js" type="application/javascript"></script>
         <script src="/script/gallery.js" type="application/javascript"></script>
     </head>
 
@@ -17,15 +17,21 @@
             <h3>This page is currently being worked on. Not all the features may work correctly.</h3>
         </div>
         <header class="center row" id="header">
-            <h1 style="margin: 0;">FlightSim Screenshot Gallery</h1>
+            <nav class="center row">
+                <a href="/">
+                    <img src="/resource/home.svg" id="home" title="Home" />
+                </a>
+                <h1 style="margin: 0;">Gallery</h1>
+                <div>
+                    <img src="/resource/order.svg" id="order" title="Order"/>
+                    <img src="/resource/filter.svg" id="filter" title="Filter" />
+                </div>
+            </nav>
         </header>
-        <nav class="center row">
-            <img src="/resource/filter.svg" id="filter" title="Filter" style="height: 7vh;"/> <!-- not working yet-->
-            <img src="/resource/order.svg" id="order" title="Order" style="height: 7vh;"/> 
-        </nav>
         <div id="gallery">
         </div>
-        <div id="topBtn" class="center column" onclick="document.querySelector('html').scrollTo({top:0, behavior:'smooth'})">
+        <div id="topBtn" class="center column"
+            onclick="document.querySelector('html').scrollTo({top:0, behavior:'smooth'})">
             <h4 style="margin: 0;">↑<br>Top</h4>
         </div>
         <footer>

@@ -16,7 +16,21 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+@media(hover: none) and (pointer: coarse) {
+    nav {
+        width: 100vw;
+    }
+}
+
+
+#home, #filter, #order {
+    height: 7vh;
+}
+
 @media (hover: hover) and (pointer: fine) {
+    nav {
+        width: 80vw;
+    }
 
     .gallery-preview:hover,
     #topBtn:hover {
@@ -79,9 +93,8 @@ body {
 
 
 nav {
-    width: 80vw;
     height: 7vh;
-    margin: 2vh;
+    margin: 2vh 0;
     justify-content: space-between !important;
 }
 
