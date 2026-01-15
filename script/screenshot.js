@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#acftTag').style.display = data.acft === undefined ? 'none' : '';
   document.querySelector('#acftTagLink').href = `/gallery.html?acft=${data.acft}`;
   document.querySelector('#arptTag').style.display = data.arpt === undefined ? 'none' : '';
-  document.querySelector('#arptTagLink').href = `/gallery.html?acft=${data.arpt}`;
+  document.querySelector('#arptTagLink').href = `/gallery.html?arpt=${data.arpt}`;
   document.querySelector('#lvryTag').style.display = data.lvry === undefined ? 'none' : '';
-  document.querySelector('#lvryTagLink').href = `/gallery.html?acft=${data.lvry}`;
+  document.querySelector('#lvryTagLink').href = `/gallery.html?lvry=${data.lvry}`;
   document.querySelector('#arpt').innerText = data.arpt;
   document.querySelector('#acft').innerText = data.acft;
   document.querySelector('#lvry').innerText = data.lvry;
