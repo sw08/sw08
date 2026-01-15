@@ -16,11 +16,6 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-@media(hover: none) and (pointer: coarse) {
-    nav {
-        width: 100vw;
-    }
-}
 
 
 #home, #filter, #order {
@@ -28,9 +23,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    nav {
-        width: 80vw;
-    }
 
     .gallery-preview:hover,
     #topBtn:hover {
@@ -109,25 +101,3 @@ nav {
     transition: ease-in-out 0.3s;
 }
 
-
-@keyframes shake {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    25% {
-        transform: rotate(5deg);
-    }
-
-    50% {
-        transform: rotate(0eg);
-    }
-
-    75% {
-        transform: rotate(-5deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-    }
-}

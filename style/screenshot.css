@@ -1,0 +1,65 @@
+body {
+    justify-content: flex-start !important;
+}
+
+nav {
+    height: 7vh;
+    margin: 2vh;
+    justify-content: space-between !important;
+}
+
+#home,
+#gallery,
+#save{
+    transition: ease-in-out 0.2s;
+}
+
+img#screenshot {
+    aspect-ratio: 16 / 9;
+    max-height: 65vh;
+    max-width: 80vw;
+}
+
+.tag {
+    transition: ease-in-out 0.3s;
+    background-color: white;
+    color: #6e90f7;
+    height: 3rem;
+    margin: 0 0.5vw;
+    padding: 0 1.5vh;
+    border-radius: 1.5rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    #gallery,
+    #save {
+        height: 7vh;
+    }
+
+    #gallery:hover,
+    #save:hover{
+        transform: scale(1.05);
+    }
+
+    .tag:hover {
+        animation: both 0.3s ease-in-out shake;
+        background-color: #6e90f7;
+        color: white;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    #gallery,
+    #save {
+        height: 6vh;
+    }
+
+    #gallery {
+        margin-right: 1vh;
+    }
+
+    #save {
+        margin-left: 1vh;
+    }
+}
