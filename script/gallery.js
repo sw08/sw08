@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.byArpt = await (await fetch('/database/by_arpt.json')).json();
   document.byAcft = await (await fetch('/database/by_acft.json')).json();
   document.files = await (await fetch('/database/all_files.json')).json();
-  document.galleryDiv = document.querySelector('div#gallery');
+  document.galleryDiv = document.querySelector('main#gallery');
   const params = new URLSearchParams(window.location.search);
   document.ascending = params.get('ascending') === 'true';
   processFileNames();
@@ -47,7 +47,7 @@ function loadPhoto (count) {
 }
 
 function refreshFilter () {
-  document.querySelector('div#gallery').innerHTML = '';
+  document.querySelector('main#gallery').innerHTML = '';
   document.filtered = filter({});
 }
 
