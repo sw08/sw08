@@ -2,11 +2,10 @@
     width: 33ch;
 }
 
-
 #galleryLinkIcon {
     mask-image: url('/resource/link.svg');
 }
- 
+
 
 #profilePic {
     width: 25vh;
@@ -16,7 +15,6 @@
 body {
     height: 100vh;
 }
-
 
 @keyframes shake {
     0% {

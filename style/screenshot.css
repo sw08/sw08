@@ -10,7 +10,7 @@ nav {
 
 #home,
 #gallery,
-#save{
+#save {
     transition: ease-in-out 0.2s;
 }
 
@@ -38,7 +38,7 @@ img#screenshot {
     }
 
     #gallery:hover,
-    #save:hover{
+    #save:hover {
         transform: scale(1.05);
     }
 
@@ -49,7 +49,8 @@ img#screenshot {
     }
 }
 
-@media (hover: none) and (pointer: coarse) {
+@media (pointer: coarse) {
+
     #gallery,
     #save {
         height: 6vh;

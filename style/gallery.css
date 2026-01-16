@@ -16,9 +16,9 @@
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-
-
-#home, #filter, #order {
+#home,
+#filter,
+#order {
     height: 7vh;
 }
 
@@ -83,13 +83,11 @@ body {
     color: #6e90f7;
 }
 
-
 nav {
     height: 7vh;
     margin: 2vh 0;
     justify-content: space-between !important;
 }
-
 
 .tag {
     position: absolute;
@@ -100,4 +98,3 @@ nav {
     border-radius: 1.5ch;
     transition: ease-in-out 0.3s;
 }
-
