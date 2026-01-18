@@ -13,21 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   const data = parseImageFileName(params.get('img'));
-  document.querySelector('#acftTag').style.display = data.acft === undefined ? 'none' : '';
+  document.querySelector('#acftTag').style.display = data.acft === null ? 'none' : '';
   document.querySelector('#acftTagLink').href = `/gallery.html?acft=${data.acft}`;
-  document.querySelector('#arptTag').style.display = data.arpt === undefined ? 'none' : '';
+  document.querySelector('#arptTag').style.display = data.arpt === null ? 'none' : '';
   document.querySelector('#arptTagLink').href = `/gallery.html?arpt=${data.arpt}`;
-  document.querySelector('#lvryTag').style.display = data.lvry === undefined ? 'none' : '';
+  document.querySelector('#lvryTag').style.display = data.lvry === null ? 'none' : '';
   document.querySelector('#lvryTagLink').href = `/gallery.html?lvry=${data.lvry}`;
   document.querySelector('#arpt').innerText = data.arpt;
   document.querySelector('#acft').innerText = data.acft;
   document.querySelector('#lvry').innerText = data.lvry;
   data.dateString = data.dateString.replaceAll('/', '-').replace(' ', '-').replaceAll(':', '-');
-  document.querySelector('#date').innerHTML = `<a href='/gallery.html?at=${data.dateString.slice(0, 4)}'>${data.year}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?at=${data.dateString.slice(0, 7)}'>${data.month}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?at=${data.dateString.slice(0, 10)}'>${data.day}</a> `;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?at=${data.dateString.slice(0, 13)}'>${data.hour}</a>:`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?at=${data.dateString.slice(0, 16)}'>${data.minute}</a>`;
+  document.querySelector('#date').innerHTML = `<a href='/gallery.html?start=${data.year}-01-01&end=${data.year}-12-31'>${data.year}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 7)}&end=${data.year}-${data.month}-${(new Date(data.year, data.month, 0)).getDate()}'>${data.month}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 10)}&end=${data.dateString.slice(0, 10)}'>${data.day}</a> `;
+  document.querySelector('#date').innerHTML += `${data.hour}:${data.minute}`;
 });
 
 function resizeListener () {

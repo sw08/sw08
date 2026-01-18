@@ -33,6 +33,7 @@ body {
     color: white;
     -ms-overflow-style: none;
     text-align: center;
+    vertical-align: middle;
 }
 
 header,
@@ -193,3 +194,6 @@ div.hoverIcon {
     }
 }
 
+img {
+    display: inline-block;
+}

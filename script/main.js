@@ -12,8 +12,12 @@ function parseImageFileName(fn) {
     hour: Number(parts.at(-1).slice(0, 2)),
     minute: Number(parts.at(-1).slice(2, 4)),
     second: Number(parts.at(-1).slice(4, 6)),
-    dataType: parts.length === 3 ? 'arpt' : 'acft'
+    dataType: parts.length === 3 ? 'arpt' : 'acft',
+    arpt: null,
+    acft: null,
+    lvry: null
   };
+  data.date = new Date(data.year, data.month - 1, data.day, data.hour, data.minute, data.second);
   data.dateString = `${data.year}/${leftZeroPad(data.month, 2)}/${leftZeroPad(data.day, 2)} ${leftZeroPad(data.hour, 2)}:${leftZeroPad(data.minute, 2)}:${leftZeroPad(data.second, 2)}`;
   if (data.dataType === 'arpt') {
     data.arpt = parts[0];

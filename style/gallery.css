@@ -9,7 +9,9 @@
     width: 100%;
     box-sizing: border-box;
     aspect-ratio: 16 / 9;
+    max-width: 500px;
 }
+
 
 .preview-image {
     width: 100%;
@@ -43,6 +45,15 @@
         animation: both 0.3s ease-in-out shake;
         background-color: white;
         color: #6e90f7;
+    }
+
+    .filter, .filter > h5 {
+        will-change: transform;
+    }
+
+    .filter:hover {
+        cursor: pointer;
+        transform: scale(1.05);
     }
 }
 
@@ -87,6 +98,25 @@ nav {
     height: 7vh;
     margin: 2vh 0;
     justify-content: space-between !important;
+}
+
+.filterRemoveBtn {
+    height: 1.5ch;
+}
+
+.filter {
+    background-color: white;
+    color: #6e90f7;
+    height: 5ch;
+    padding: 0 1rem;
+    margin: 1ch 0.75ch;
+    border-radius: 2.5ch;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: ease-in-out 0.3s;
+}
+
+#filterList {
+    margin-bottom: 1vh;
 }
 
 .tag {
