@@ -5,6 +5,42 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.files = await (await fetch('/database/all_files.json')).json();
   document.galleryDiv = document.querySelector('main#gallery');
   const params = new URLSearchParams(window.location.search);
+  document.filter = {
+    arpt: params.get('arpt'),
+    acft: params.get('acft'),
+    lvry: params.get('lvry'),
+    end: params.get('end'),
+    start: params.get('start'),
+    dataType: null
+  };
+  if (document.filter.start && document.filter.end) {
+    const s = new Date(document.filter.start);
+    const e = new Date(document.filter.end);
+    if (isNaN(s)) {
+      alert('Filter is invalid: Date of "After" filter is invalid');
+      document.filter.start = null;
+    }
+    if (isNaN(e)) {
+      alert('Filter is invalid: Date of "Before" filter is invalid');
+      document.filter.end = null;
+    }
+    if (e - s < 0) { // order is wrong
+      alert('Filter is invalid: Date of "Before" can\'t be earlier than that of "After"');
+      document.filter.start = null;
+      document.filter.end = null;
+    }
+  }
+  if (document.filter.arpt && (document.filter.acft || document.filter.lvry)) {
+    alert('Filter is invalid: "Airport" filter can\' be used with "Aircraft" filter or "Livery/reg" filter');
+    document.filter.arpt = null;
+    document.filter.acft = null;
+    document.filter.lvry = null;
+  }
+  if (document.filter.arpt) {
+    document.filter.dataType = 'arpt';
+  } else if (document.filter.acft || document.filter.lvry) {
+    document.filter.dataType = 'acft';
+  }
   document.ascending = params.get('ascending') === 'true';
   processFileNames();
   if (document.ascending) {
@@ -12,15 +48,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   }
   document.loaded = 0;
   refreshFilter();
-  let toLoad = 12;
-  if (toLoad > document.files.length) toLoad = document.files.length;
-  loadPhoto(toLoad);
-  document.columnCount = getGalleryColumnCount();
-  if (document.loaded < document.files.length && toLoad % document.columnCount) {
-    toLoad = (Math.floor(toLoad / document.columnCount) + 1) * document.columnCount;
-  }
-  loadPhoto(toLoad - document.loaded);
-  document.querySelector('#order').onclick = reverseBtn;
 });
 
 window.addEventListener('resize', () => {
@@ -37,7 +64,7 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-function loadPhoto (count) {
+function loadPhoto(count) {
   for (let i = document.loaded; i < Math.min(document.loaded + count, document.filtered.length); i++) {
     const img = document.filtered[i];
     addImage(i, img);
@@ -46,12 +73,58 @@ function loadPhoto (count) {
   refreshState();
 }
 
-function refreshFilter () {
+function refreshFilter() {
   document.querySelector('main#gallery').innerHTML = '';
-  document.filtered = filter({});
+  document.filtered = filter();
+  if (document.filtered.length === 0) {
+    alert('Nothing found after search');
+    window.location.href = '/gallery.html';
+    return;
+  }
+  document.loaded = 0;
+  let toLoad = 12;
+  if (toLoad > document.filtered.length) toLoad = document.filtered.length;
+  loadPhoto(toLoad);
+  document.columnCount = getGalleryColumnCount();
+  if (document.loaded < document.filtered.length && toLoad % document.columnCount) {
+    toLoad = (Math.floor(toLoad / document.columnCount) + 1) * document.columnCount;
+  }
+  loadPhoto(toLoad - document.loaded);
+  Object.keys(document.filter).forEach(x => {
+    if (x === 'dataType') return;
+    const filterDiv = document.querySelector(`#${x}Filter`);
+    if (document.filter[x]) {
+      filterDiv.style.display = '';
+      filterDiv.firstElementChild.innerText = `${{ acft: 'Aircraft', arpt: 'Airport', lvry: 'Livery/Reg', start: 'After', end: 'Before' }[x]}: ${document.filter[x].toUpperCase().replace('ARPT', 'Airport').replace('ACFT', 'Aircraft')}`;
+    } else {
+      filterDiv.style.display = 'none';
+    }
+  });
+  document.querySelector('#order').onclick = reverseBtn;
 }
 
-function addImage (order, img) {
+function setFilter(data, refresh = true) {
+  for (const key of Object.keys(data)) {
+    document.filter[key] = data[key];
+  }
+  if (refresh) refreshFilter();
+}
+
+function removeFilter(data, refresh = true) {
+  const temp = {};
+  if (Array.isArray(data)) {
+    data.forEach(x => { temp[x] = null; });
+  } else {
+    temp[data] = null;
+  }
+  if (Object.keys(document.filter).every(x => x === 'dataType' || document.filter[x] === null)) {
+    document.filter.dataType = null;
+  }
+  setFilter(temp, false);
+  if (refresh) refreshFilter();
+}
+
+function addImage(order, img) {
   const div = document.createElement('div');
   div.classList.add('gallery-preview');
   div.style.order = order;
@@ -76,19 +149,24 @@ function addImage (order, img) {
   document.galleryDiv.appendChild(div);
 }
 
-function refreshState () {
+function refreshState() {
   const params = new URLSearchParams();
-  params.append('ascending', document.ascending);
+  for (const item of Object.keys(document.filter)) {
+    if (item !== 'dataType' && document.filter[item]) {
+      params.append(item, document.filter[item]);
+    }
+  }
+  if (document.ascending) params.append('ascending', document.ascending);
   window.history.pushState(null, null, `?${params.toString()}`);
 }
 
-function reverseBtn () {
+function reverseBtn() {
   const params = new URLSearchParams(window.location.search);
   params.set('ascending', !document.ascending);
   window.location.href = `?${params.toString()}`;
 }
 
-function getGalleryColumnCount () {
+function getGalleryColumnCount() {
   const child = document.galleryDiv.querySelector('.gallery-preview');
   if (!child) return 0;
   const galleryWidth = document.galleryDiv.clientWidth || document.galleryDiv.getBoundingClientRect().width;
@@ -99,7 +177,7 @@ function getGalleryColumnCount () {
   return Math.max(1, Math.floor(galleryWidth / childWidth));
 }
 
-function processFileNames () {
+function processFileNames() {
   const files = [];
   for (const fn of document.files) {
     files.push(parseImageFileName(fn));
@@ -112,8 +190,54 @@ function processFileNames () {
   document.files = files;
 }
 
-function filter (filter) {
-  const result = document.files;
+function filter() {
+  const tempFiles = structuredClone(document.files);
+  if (!document.ascending) {
+    tempFiles.reverse();
+  }
+  let startTime = null;
+  let endTime = null;
+  if (document.filter.start) {
+    startTime = new Date(...document.filter.start.split('-'));
+  }
+  if (document.filter.end) {
+    endTime = new Date(...document.filter.end.split('-'));
+  }
+  let index = 0;
+  if (startTime) {
+    startTime.setMonth(startTime.getMonth() - 1);
+    while (startTime - tempFiles[index].date > 0) {
+      index++;
+    }
+  }
+  if (endTime) {
+    endTime.setMonth(endTime.getMonth() - 1);
+    endTime.setHours(23);
+    endTime.setMinutes(59);
+    endTime.setSeconds(59);
+  }
+  let checkFilter = null;
+  if (document.filter.dataType === 'arpt') {
+    checkFilter = (item) => item.arpt.toUpperCase() === document.filter.arpt.toUpperCase();
+  } else if (document.filter.dataType === 'acft') {
+    checkFilter = (item) => ((!document.filter.acft || document.filter.acft.toUpperCase() === item.acft.toUpperCase()) && (!document.filter.lvry || document.filter.lvry.toUpperCase() === item.lvry.toUpperCase()));
+  }
+  const result = [];
+  while (index < tempFiles.length) {
+    if (endTime && tempFiles[index].date - endTime >= 0) {
+      break;
+    }
+    if (document.filter.dataType) {
+      if (tempFiles[index].dataType === document.filter.dataType && checkFilter(tempFiles[index])) {
+        result.push(tempFiles[index]);
+      }
+    } else {
+      result.push(tempFiles[index]);
+    }
+    index++;
+  }
+  if (!document.ascending) {
+    result.reverse();
+  }
   return result;
-  // placeholder. to be implemented
 }

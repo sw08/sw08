@@ -43,7 +43,6 @@ img#screenshot {
     }
 
     .tag:hover {
-        animation: both 0.3s ease-in-out shake;
         background-color: #6e90f7;
         color: white;
     }

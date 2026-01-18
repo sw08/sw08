@@ -23,11 +23,38 @@
                 </a>
                 <h1 style="margin: 0;">Gallery</h1>
                 <div>
-                    <img src="/resource/order.svg" id="order" title="Order"/>
+                    <img src="/resource/order.svg" id="order" title="Order" />
                     <img src="/resource/filter.svg" id="filter" title="Filter" />
                 </div>
             </nav>
         </header>
+        <div id="filterList" class="center row">
+            <div class="filter center row" id="arptFilter">
+                <h5 style="margin: 0;margin-right: 0.5ch;">
+                </h5>
+                <img src="/resource/x.svg" class="filterRemoveBtn" onclick="removeFilter('arpt')">
+            </div>
+            <div class="filter center row" id="acftFilter">
+                <h5 style="margin: 0;margin-right: 0.5ch;">
+                </h5>
+                <img src="/resource/x.svg" class="filterRemoveBtn" onclick="removeFilter('acft')">
+            </div>
+            <div class="filter center row" id="lvryFilter">
+                <h5 style="margin: 0;margin-right: 0.5ch;">
+                </h5>
+                <img src="/resource/x.svg" class="filterRemoveBtn" onclick="removeFilter('lvry')">
+            </div>
+            <div class="filter center row" id="startFilter">
+                <h5 style="margin: 0;margin-right: 0.5ch;">
+                </h5>
+                <img src="/resource/x.svg" class="filterRemoveBtn" onclick="removeFilter('start')">
+            </div>
+            <div class="filter center row" id="endFilter">
+                <h5 style="margin: 0;margin-right: 0.5ch;">
+                </h5>
+                <img src="/resource/x.svg" class="filterRemoveBtn" onclick="removeFilter('end')">
+            </div>
+        </div>
         <main id="gallery">
         </main>
         <div id="topBtn" class="center column"
