@@ -1,4 +1,7 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  document.lvry = await (await fetch('/database/lvry.json')).json();
+  document.arpt = await (await fetch('/database/arpt.json')).json();
+  document.acft = await (await fetch('/database/acft.json')).json();
   const params = new URLSearchParams(window.location.search);
   if (!params.has('img')) return (window.location.href = '/404.html');
   document.querySelector('a#saveLink').href = `/screenshots/1080p/${params.get('img')}.webp`;
@@ -22,14 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#arpt').innerText = data.arpt;
   document.querySelector('#acft').innerText = data.acft;
   document.querySelector('#lvry').innerText = data.lvry;
+  document.querySelector('#arpt').title = document.arpt[data.arpt];
+  document.querySelector('#acft').title = document.acft[data.acft];
+  document.querySelector('#lvry').title = document.lvry[data.lvry] || 'Private Aircraft or Fictional Registration Number';
   data.dateString = data.dateString.replaceAll('/', '-').replace(' ', '-').replaceAll(':', '-');
-  document.querySelector('#date').innerHTML = `<a href='/gallery.html?start=${data.year}-01-01&end=${data.year}-12-31'>${data.year}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 7)}&end=${data.year}-${data.month}-${(new Date(data.year, data.month, 0)).getDate()}'>${data.month}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 10)}&end=${data.dateString.slice(0, 10)}'>${data.day}</a> `;
+  document.querySelector('#date').innerHTML = `<a href='/gallery.html?start=${data.year}-01-01&end=${data.year}-12-31' title='Search Screenshots posted on ${data.year}'>${data.year}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 7)}&end=${data.year}-${data.month}-${(new Date(data.year, data.month, 0)).getDate()}' title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}'>${data.month}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 10)}&end=${data.dateString.slice(0, 10)}'  title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}/${leftZeroPad(data.day, 2)}'>${data.day}</a> `;
   document.querySelector('#date').innerHTML += `${data.hour}:${data.minute}`;
 });
 
-function resizeListener () {
+function resizeListener() {
   if (window.innerWidth >= 1800) {
     document.screenshot.src = document.screenshot.src.replace('/720p/', '/1080p/');
     window.removeEventListener('resize', resizeListener);
