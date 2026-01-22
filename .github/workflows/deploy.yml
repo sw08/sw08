@@ -18,8 +18,16 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/cache@v4
         with:
-          path: screenshots
-          key: originals-${{ hashFiles('screenshots/**/*.webp', 'screenshots/**/*.png') }}
+          path: screenshots/1080p
+          key: originals-${{ hashFiles('screenshots/1080p/*.webp') }}
+      - uses: actions/cache@v4
+        with:
+          path: screenshots/720p
+          key: originals-${{ hashFiles('screenshots/720p/*.webp') }}
+      - uses: actions/cache@v4
+        with:
+          path: screenshots/360p
+          key: originals-${{ hashFiles('screenshots/360p/*.webp') }}
       - uses: actions/setup-python@v6
         with:
           python-version: 3.11
