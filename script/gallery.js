@@ -1,7 +1,10 @@
 window.addEventListener('DOMContentLoaded', async () => {
-  document.byLvry = await (await fetch('/database/by_lvry.json')).json();
-  document.byArpt = await (await fetch('/database/by_arpt.json')).json();
-  document.byAcft = await (await fetch('/database/by_acft.json')).json();
+//   document.byLvry = await (await fetch('/database/by_lvry.json')).json();
+//   document.byArpt = await (await fetch('/database/by_arpt.json')).json();
+//   document.byAcft = await (await fetch('/database/by_acft.json')).json();
+//   document.lvry = await (await fetch('/database/lvry.json')).json();
+  document.arpt = await (await fetch('/database/arpt.json')).json();
+  document.acft = await (await fetch('/database/acft.json')).json();
   document.files = await (await fetch('/database/all_files.json')).json();
   document.galleryDiv = document.querySelector('main#gallery');
   const params = new URLSearchParams(window.location.search);
@@ -153,9 +156,11 @@ function addImage(order, img) {
   if (img.dataType === 'arpt') {
     tagh4.innerText = img.arpt;
     tagDiv.onclick = () => { setFilter({ arpt: img.arpt }); };
+    tagDiv.title = document.arpt[img.arpt];
   } else {
     tagh4.innerText = img.acft;
     tagDiv.onclick = () => { setFilter({ acft: img.acft }); };
+    tagDiv.title = document.acft[img.acft];
   }
   tagDiv.appendChild(tagh4);
   div.appendChild(tagDiv);

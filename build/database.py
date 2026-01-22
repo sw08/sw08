@@ -23,7 +23,10 @@ for i in files:
 if os.path.isdir("../database"):
     shutil.rmtree("../database")
 os.mkdir("../database")
-os.chdir("../database")
+os.chdir('..')
+for i in ["arpt.json", "acft.json", "lvry.json"]:
+    shutil.copy(i, f"database/{i}")
+os.chdir("./database")
 
 
 with open("by_acft.json", "w") as f:
@@ -35,3 +38,4 @@ with open("by_arpt.json", "w") as f:
 
 with open("all_files.json", "w") as f:
     json.dump(files, f)
+    
