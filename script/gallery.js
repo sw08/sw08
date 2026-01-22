@@ -13,6 +13,17 @@ window.addEventListener('DOMContentLoaded', async () => {
     start: params.get('start'),
     dataType: null
   };
+  checkFilterValidity();
+  document.ascending = params.get('ascending') === 'true';
+  processFileNames();
+  if (document.ascending) {
+    document.files.reverse();
+  }
+  document.loaded = 0;
+  refreshFilter();
+});
+
+function checkFilterValidity() {
   if (document.filter.start && document.filter.end) {
     const s = new Date(document.filter.start);
     const e = new Date(document.filter.end);
@@ -40,15 +51,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     document.filter.dataType = 'arpt';
   } else if (document.filter.acft || document.filter.lvry) {
     document.filter.dataType = 'acft';
+  } else {
+    document.filter.dataType = null;
   }
-  document.ascending = params.get('ascending') === 'true';
-  processFileNames();
-  if (document.ascending) {
-    document.files.reverse();
-  }
-  document.loaded = 0;
-  refreshFilter();
-});
+}
 
 window.addEventListener('resize', () => {
   document.columnCount = getGalleryColumnCount();
@@ -74,6 +80,7 @@ function loadPhoto(count) {
 }
 
 function refreshFilter() {
+  checkFilterValidity();
   document.querySelector('main#gallery').innerHTML = '';
   document.filtered = filter();
   if (document.filtered.length === 0) {
@@ -129,21 +136,27 @@ function addImage(order, img) {
   div.classList.add('gallery-preview');
   div.style.order = order;
   div.title = img.dateString;
-  div.addEventListener('click', function () {
-    window.location.href = `/screenshot.html?img=${img.name}`;
-  });
+  const linkA = document.createElement('a');
+  linkA.href = `/screenshot.html?img=${img.name}`;
   const imgTag = document.createElement('img');
   imgTag.src = `/screenshots/360p/${img.name}.webp`;
   imgTag.classList.add('preview-image');
   imgTag.loading = 'lazy';
-  div.appendChild(imgTag);
+  linkA.appendChild(imgTag);
+  div.appendChild(linkA);
   const tagDiv = document.createElement('div');
   tagDiv.classList.add('tag');
   tagDiv.classList.add('center');
   tagDiv.classList.add('row');
   const tagh4 = document.createElement('h4');
   tagh4.style = 'margin: 0;';
-  tagh4.innerText = img.dataType === 'arpt' ? img.arpt : `${img.acft}`;
+  if (img.dataType === 'arpt') {
+    tagh4.innerText = img.arpt;
+    tagDiv.onclick = () => { setFilter({ arpt: img.arpt }); };
+  } else {
+    tagh4.innerText = img.acft;
+    tagDiv.onclick = () => { setFilter({ acft: img.acft }); };
+  }
   tagDiv.appendChild(tagh4);
   div.appendChild(tagDiv);
   document.galleryDiv.appendChild(div);
