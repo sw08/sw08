@@ -12,8 +12,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     arpt: params.get('arpt'),
     acft: params.get('acft'),
     lvry: params.get('lvry'),
-    end: params.get('end'),
-    start: params.get('start'),
+    until: params.get('until'),
+    since: params.get('since'),
     dataType: null
   };
   checkFilterValidity();
@@ -28,21 +28,21 @@ window.addEventListener('DOMContentLoaded', async () => {
 });
 
 function checkFilterValidity() {
-  if (document.filter.start && document.filter.end) {
-    const s = new Date(document.filter.start);
-    const e = new Date(document.filter.end);
+  if (document.filter.since && document.filter.until) {
+    const s = new Date(document.filter.since);
+    const e = new Date(document.filter.until);
     if (isNaN(s)) {
-      alert('Filter is invalid: Date of "After" filter is invalid');
-      document.filter.start = null;
+      alert('Filter is invalid: Date of "Since" filter is invalid');
+      document.filter.since = null;
     }
     if (isNaN(e)) {
-      alert('Filter is invalid: Date of "Before" filter is invalid');
-      document.filter.end = null;
+      alert('Filter is invalid: Date of "Until" filter is invalid');
+      document.filter.until = null;
     }
     if (e - s < 0) { // order is wrong
-      alert('Filter is invalid: Date of "Before" can\'t be earlier than that of "After"');
-      document.filter.start = null;
-      document.filter.end = null;
+      alert('Filter is invalid: Date of "Until" can\'t be earlier than that of "Since"');
+      document.filter.since = null;
+      document.filter.until = null;
     }
   }
   if (document.filter.arpt && (document.filter.acft || document.filter.lvry)) {
@@ -106,7 +106,7 @@ function refreshFilter() {
     const filterDiv = document.querySelector(`#${x}Filter`);
     if (document.filter[x]) {
       filterDiv.style.display = '';
-      filterDiv.firstElementChild.innerText = `${{ acft: 'Aircraft', arpt: 'Airport', lvry: 'Livery/Reg', start: 'After', end: 'Before' }[x]}: ${document.filter[x].toUpperCase().replace('ARPT', 'Airport').replace('ACFT', 'Aircraft')}`;
+      filterDiv.firstElementChild.innerText = `${{ acft: 'Aircraft', arpt: 'Airport', lvry: 'Livery/Reg', since: 'Since', until: 'Until' }[x]}: ${document.filter[x].toUpperCase().replace('ARPT', 'Airport').replace('ACFT', 'Aircraft')}`;
     } else {
       filterDiv.style.display = 'none';
     }
@@ -214,26 +214,26 @@ function filter() {
   if (!document.ascending) {
     tempFiles.reverse();
   }
-  let startTime = null;
-  let endTime = null;
-  if (document.filter.start) {
-    startTime = new Date(...document.filter.start.split('-'));
+  let sinceTime = null;
+  let untilTime = null;
+  if (document.filter.since) {
+    sinceTime = new Date(...document.filter.since.split('-'));
   }
-  if (document.filter.end) {
-    endTime = new Date(...document.filter.end.split('-'));
+  if (document.filter.until) {
+    untilTime = new Date(...document.filter.until.split('-'));
   }
   let index = 0;
-  if (startTime) {
-    startTime.setMonth(startTime.getMonth() - 1);
-    while (startTime - tempFiles[index].date > 0) {
+  if (sinceTime) {
+    sinceTime.setMonth(sinceTime.getMonth() - 1);
+    while (sinceTime - tempFiles[index].date > 0) {
       index++;
     }
   }
-  if (endTime) {
-    endTime.setMonth(endTime.getMonth() - 1);
-    endTime.setHours(23);
-    endTime.setMinutes(59);
-    endTime.setSeconds(59);
+  if (untilTime) {
+    untilTime.setMonth(untilTime.getMonth() - 1);
+    untilTime.setHours(23);
+    untilTime.setMinutes(59);
+    untilTime.setSeconds(59);
   }
   let checkFilter = null;
   if (document.filter.dataType === 'arpt') {
@@ -243,7 +243,7 @@ function filter() {
   }
   const result = [];
   while (index < tempFiles.length) {
-    if (endTime && tempFiles[index].date - endTime >= 0) {
+    if (untilTime && tempFiles[index].date - untilTime >= 0) {
       break;
     }
     if (document.filter.dataType) {
