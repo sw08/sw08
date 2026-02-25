@@ -26,6 +26,13 @@
 
 @media (hover: hover) and (pointer: fine) {
 
+    #orderFilter {
+        cursor: inherit;
+    }
+    #orderFilter:hover {
+        transform: none;
+    }
+
     .gallery-preview:hover,
     #topBtn:hover {
         transform: scale(1.05);

@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   processFileNames();
   if (document.ascending) {
     document.files.reverse();
+    document.querySelector('#orderFilter > h5').innerText = 'Order: Old to New';
   }
   document.loaded = 0;
   refreshFilter();
