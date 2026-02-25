@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.querySelector('#acft').title = document.acft[data.acft];
   document.querySelector('#lvry').title = document.lvry[data.lvry] || 'Private Aircraft or Fictional Registration Number';
   data.dateString = data.dateString.replaceAll('/', '-').replace(' ', '-').replaceAll(':', '-');
-  document.querySelector('#date').innerHTML = `<a href='/gallery.html?start=${data.year}-01-01&end=${data.year}-12-31' title='Search Screenshots posted on ${data.year}'>${data.year}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 7)}&end=${data.year}-${data.month}-${(new Date(data.year, data.month, 0)).getDate()}' title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}'>${data.month}</a>/`;
-  document.querySelector('#date').innerHTML += `<a href='/gallery.html?start=${data.dateString.slice(0, 10)}&end=${data.dateString.slice(0, 10)}'  title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}/${leftZeroPad(data.day, 2)}'>${data.day}</a> `;
+  document.querySelector('#date').innerHTML = `<a href='/gallery.html?since=${data.year}-01-01&until=${data.year}-12-31' title='Search Screenshots posted on ${data.year}'>${data.year}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?since=${data.dateString.slice(0, 7)}-01&until=${data.year}-${leftZeroPad(data.month, 2)}-${leftZeroPad((new Date(data.year, data.month, 0)).getDate(), 2)}' title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}'>${leftZeroPad(data.month, 2)}</a>/`;
+  document.querySelector('#date').innerHTML += `<a href='/gallery.html?since=${data.dateString.slice(0, 10)}&until=${data.dateString.slice(0, 10)}'  title='Search Screenshots posted on ${data.year}/${leftZeroPad(data.month, 2)}/${leftZeroPad(data.day, 2)}'>${leftZeroPad(data.day, 2)}</a> `;
   document.querySelector('#date').innerHTML += `${data.hour}:${data.minute}`;
 });
 
