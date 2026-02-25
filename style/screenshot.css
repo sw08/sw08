@@ -28,6 +28,7 @@ img#screenshot {
     margin: 0 0.5vw;
     padding: 0 1.5vh;
     border-radius: 1.5rem;
+    border: white solid 0.4vh;
 }
 
 @media (hover: hover) and (pointer: fine) {
