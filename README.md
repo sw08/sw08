@@ -1,7 +1,7 @@
 # Seungwoo Yi 
 
 Just a Korean student  
-NodeJS, Python, Arduino  
-Flight Sim Related Things 
+NodeJS, Python, C (Arduino, ESP32/8266, RP2040, ...), Lua
+Mostly Flight Sim Related Things 
 
-https://sw08.dev
+https://sw08.me
